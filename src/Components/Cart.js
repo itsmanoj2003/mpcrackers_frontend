@@ -81,7 +81,7 @@ export default function Cart() {
         try {
 
             const res = await axios.post(
-                "http://localhost:3001/mpcrackers/order",
+                "https://mpcrackers-api.onrender.com/mpcrackers/order",
                 finalOrder
             );
             setOrderData({
@@ -189,7 +189,7 @@ export default function Cart() {
                             <div key={item._id} className="cart-item-container">
 
                                 <div className="cart-item-image-container">
-                                    <img src={`http://localhost:3001${item.productImage}`} className="cart-item-image" alt={item.productName} />
+                                    <img src={`https://mpcrackers-api.onrender.com${item.productImage}`} className="cart-item-image" alt={item.productName} />
                                 </div>
 
                                 <div className="cart-item-info-container">

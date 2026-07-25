@@ -4,9 +4,9 @@ import axios from "axios";
 import "./Admin.css";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:3001/mpcrackers";
+  process.env.REACT_APP_API_URL || "https://mpcrackers-api.onrender.com/mpcrackers";
 const SERVER_URL =
-  process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
+  process.env.REACT_APP_SERVER_URL || "https://mpcrackers-api.onrender.com";
 
 const CATEGORIES = [
   "Bomb",

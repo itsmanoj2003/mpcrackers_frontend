@@ -305,7 +305,7 @@ const ViewOrders = () => {
     setLoading(true);
     setError(false);
     try {
-      const response = await axios.get("http://localhost:3001/mpcrackers/getorders");
+      const response = await axios.get("https://mpcrackers-api.onrender.com/mpcrackers/getorders");
       setOrders(response.data.orders || []);
     } catch (err) {
       setError(true);

@@ -39,7 +39,7 @@ export default function Crackers() {
     const [searhitem, setSearchItem] = useState('')
     const [searchCategory, setSearchCategory] = useState('All')
     useEffect(() => {
-        axios.get('http://localhost:3001/mpcrackers/getcrackers')
+        axios.get('https://mpcrackers-api.onrender.com/mpcrackers/getcrackers')
             .then(res => {
                 setCrackdata(res.data)
             })
@@ -100,7 +100,7 @@ export default function Crackers() {
 
                             <div className="cracker-image-container">
                                 <img
-                                    src={`http://localhost:3001${item.productImage}`}
+                                    src={`https://mpcrackers-api.onrender.com${item.productImage}`}
                                     alt={item.productName}
                                     className="crackers-image"
                                 />

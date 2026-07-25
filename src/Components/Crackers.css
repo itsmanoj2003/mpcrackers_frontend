@@ -1,0 +1,861 @@
+.crcakers-main-container{
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 100px;
+    background-color: #3F0D12;
+    padding-bottom: 50px;
+}
+
+.crackers-search-container{
+    height: 300px;
+    width: 90%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+    background-color: white;
+    border-radius: 20px;
+    animation: zoomIn 0.3s ease-in 1;
+}
+
+@keyframes zoomIn{
+    0%{
+        opacity: 0;
+        scale: 1.05;
+    }
+    100%{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+/* Search & Filter */
+.search-filter-container{
+    height: 100%;
+    width: 70%;
+    border: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-field-container,.filter-options-container{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-field-container{
+    align-items: flex-end;
+}
+
+.filter-options-container{
+    align-items: flex-start;
+}
+
+.filter-options-container > h3{
+    font-family: "Bungee", sans-serif;
+    font-size: 15px;
+    color: #3F0D12;
+    margin-left: -50px;
+}
+
+.crackers-search-field{
+    height: 40px;
+    width: 500px;
+    padding-left: 20px;
+    outline: none;
+    border: 2px solid #3F0D12;
+    border-radius: 5px;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 15px;
+    color: #3F0D12;
+}
+
+.filter-btn{
+    margin-left: 10px;
+    height: 45px;
+    width: 45px;
+    background-color: #3F0D12;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E4AA2B;
+    font-size: 15px;
+}
+
+.filter-btn:hover{
+    background-color: #E4AA2B;
+    color: #3F0D12;
+    scale: 1.05;
+}
+
+.category-selection{
+    height: 40px;
+    width: 600px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 2px solid #3F0D12;
+    cursor: pointer;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 15px;
+    z-index: 1000;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out 1;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+        margin-top: 50px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 20px;
+    }
+}
+
+.crackers-image-conataier{
+    height: 100%;
+    width: 30%;
+    border: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.crackers-img:first-child{
+    border-top-left-radius: 20px;
+}
+
+.crackers-img{
+    height: 300px;
+    width: 100%;
+    filter: drop-shadow(0 2px 20px #E4AA2B);
+    border-bottom-right-radius: 20px;
+}
+
+
+.crackers-list-container{
+    height: fit-content;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+
+
+
+
+/* Card */
+
+.cracker-card{
+    height: 350px;
+    width: 255px;
+    border-radius: 20px;
+    background-color: #F8F8F8;
+    box-shadow: 2px 2px 10px #e4a92b64;
+    transition: all 0.2s ease;
+}
+
+.cracker-card:hover{
+    scale: 1.03;
+}
+
+.cracker-image-container{
+    height: 200px;
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+
+.crackers-image{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.cracker-card > p{
+    font-family: "Josefin Sans", sans-serif;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.cracker-card > h3{
+    width: 100%;
+    padding-left: 10px;
+    color: #3F0D12;
+    line-height: 0;
+}
+
+.price-container{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 10px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.mrp-price{
+    margin: 0;
+    color: #888;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+.selling-price{
+    margin: 0;
+    color: #d62828;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.quantity{
+    margin: 0;
+    color: #3F0D12;
+    font-size: 12px;
+}
+
+.addtocart-btn-container{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.addtocart-btn{
+    height: 35px;
+    width: 120px;
+    cursor: pointer;
+    font-family: "Josefin Sans", sans-serif;
+    border: none;
+    color: white;
+    background-color: #3F0D12;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: all 0.2s ease-in;
+}
+
+.addtocart-btn:hover{
+    background-color: #E4AA2B;
+    color: #3F0D12;
+}
+
+
+
+
+
+
+
+
+/* Media Query */
+/* ===========================
+   350px - 400px
+=========================== */
+
+@media only screen and (min-width:350px) and (max-width:400px){
+    .crackers-image-conataier{
+        display: none;
+    }   
+
+    .search-filter-container{
+        width: 100%;
+    }
+
+    .crackers-search-container{
+        height: 100px;
+        background: url('../Components/assets/searchbg.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .search-field-container{
+        flex-wrap: nowrap;
+    }
+
+    .crackers-search-field{
+        height: 30px;
+        width: 200px;
+        border: 2px solid #E4AA2B;
+    }
+
+    .filter-btn{
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+    }
+
+    .filter-options-container{
+        /* border: 1px solid; */
+    }
+
+    .category-selection{
+        height: 30px;
+        width: 270px;
+        margin-top: 10px;
+        border: 2px solid #E4AA2B;
+    }
+
+    @keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+    .filter-options-container > h3{
+        font-size: 11px;
+        font-family: "Josefin Sans", sans-serif;
+        margin-left: 0px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .filter-btn{
+        background-color: #E4AA2B;
+        color: #3F0D12;
+    }
+
+    .filter-btn:hover{
+        background-color: #3F0D12;
+        color: #E4AA2B;
+        scale: 1.05;
+    }
+
+
+
+
+
+    .crackers-list-container{
+        width:95%;
+        margin:20px auto;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+        justify-items:center;
+    }
+
+    .cracker-card{
+        width:160px;
+        height:auto;
+    }
+
+    .cracker-image-container{
+        height:120px;
+    }
+
+    .crackers-image{
+        height:120px;
+        width:100%;
+        object-fit:cover;
+
+    }
+
+    .cracker-card > p{
+        font-size:12px;
+        padding-left:8px;
+    }
+
+    .cracker-card > h3{
+        font-size:14px;
+        line-height:1.3;
+        padding-left:8px;
+    }
+
+    .price-container{
+        padding-left:8px;
+        gap:6px;
+    }
+
+    .mrp-price{
+        font-size:11px;
+    }
+
+    .selling-price{
+        font-size:16px;
+    }
+
+    .quantity{
+        margin-left: 10px;
+        font-size:11px;
+    }
+
+    .addtocart-btn-container{
+        height:50px;
+    }
+
+    .addtocart-btn{
+        width:70%;
+        height:32px;
+        font-size:13px;
+    }
+
+}
+
+
+
+
+/* ===========================
+   Up to 430px
+=========================== */
+
+@media only screen and (min-width:360px) and (max-width:430px){
+    .crackers-image-conataier{
+        display: none;
+    }   
+
+    .search-filter-container{
+        width: 100%;
+    }
+
+    .crackers-search-container{
+        height: 100px;
+        background: url('../Components/assets/searchbg.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .search-field-container{
+        flex-wrap: nowrap;
+    }
+
+    .crackers-search-field{
+        height: 30px;
+        width: 200px;
+        border: 2px solid #E4AA2B;
+    }
+
+    .filter-btn{
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+    }
+
+    .filter-options-container{
+        /* border: 1px solid; */
+    }
+
+    .category-selection{
+        height: 30px;
+        width: 270px;
+        margin-top: 10px;
+        border: 2px solid #E4AA2B;
+    }
+
+    @keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+    .filter-options-container > h3{
+        font-size: 11px;
+        font-family: "Josefin Sans", sans-serif;
+        margin-left: 0px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .filter-btn{
+        background-color: #E4AA2B;
+        color: #3F0D12;
+    }
+
+    .filter-btn:hover{
+        background-color: #3F0D12;
+        color: #E4AA2B;
+        scale: 1.05;
+    }
+
+
+
+
+
+    .crackers-list-container{
+        width:95%;
+        margin:20px auto;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+        justify-items:center;
+    }
+
+    .cracker-card{
+        width:195px;
+        height:auto;
+    }
+
+    .cracker-image-container{
+        height:120px;
+    }
+
+    .crackers-image{
+        height:120px;
+        width:100%;
+        object-fit:cover;
+
+    }
+
+    .cracker-card > p{
+        font-size:12px;
+        padding-left:8px;
+    }
+
+    .cracker-card > h3{
+        font-size:14px;
+        line-height:1.3;
+        padding-left:8px;
+    }
+
+    .price-container{
+        padding-left:8px;
+        gap:6px;
+    }
+
+    .mrp-price{
+        font-size:11px;
+    }
+
+    .selling-price{
+        font-size:16px;
+    }
+
+    .quantity{
+        margin-left: 10px;
+        font-size:11px;
+    }
+
+    .addtocart-btn-container{
+        height:50px;
+    }
+
+    .addtocart-btn{
+        width:70%;
+        height:32px;
+        font-size:13px;
+    } 
+}
+
+
+
+
+
+
+/* ===========================
+   440px - 500px
+=========================== */
+
+@media only screen and (min-width:440px) and (max-width:500px){
+    .crackers-image-conataier{
+        display: none;
+    }   
+
+    .search-filter-container{
+        width: 100%;
+    }
+
+    .crackers-search-container{
+        height: 100px;
+        background: url('../Components/assets/searchbg.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .search-field-container{
+        flex-wrap: nowrap;
+    }
+
+    .crackers-search-field{
+        height: 30px;
+        width: 200px;
+        border: 2px solid #E4AA2B;
+    }
+
+    .filter-btn{
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+    }
+
+    .filter-options-container{
+        /* border: 1px solid; */
+    }
+
+    .category-selection{
+        height: 30px;
+        width: 270px;
+        margin-top: 10px;
+        border: 2px solid #E4AA2B;
+    }
+
+    @keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+    .filter-options-container > h3{
+        font-size: 11px;
+        font-family: "Josefin Sans", sans-serif;
+        margin-left: 0px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .filter-btn{
+        background-color: #E4AA2B;
+        color: #3F0D12;
+    }
+
+    .filter-btn:hover{
+        background-color: #3F0D12;
+        color: #E4AA2B;
+        scale: 1.05;
+    }
+
+
+
+
+
+    .crackers-list-container{
+        width:95%;
+        margin:20px auto;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+        justify-items:center;
+    }
+
+    .cracker-card{
+        width:220px;
+        height:auto;
+    }
+
+    .cracker-image-container{
+        height:120px;
+    }
+
+    .crackers-image{
+        height:120px;
+        width:100%;
+        object-fit:cover;
+
+    }
+
+    .cracker-card > p{
+        font-size:12px;
+        padding-left:8px;
+    }
+
+    .cracker-card > h3{
+        font-size:14px;
+        line-height:1.3;
+        padding-left:8px;
+    }
+
+    .price-container{
+        padding-left:8px;
+        gap:6px;
+    }
+
+    .mrp-price{
+        font-size:11px;
+    }
+
+    .selling-price{
+        font-size:16px;
+    }
+
+    .quantity{
+        margin-left: 50px;
+        font-size:11px;
+    }
+
+    .addtocart-btn-container{
+        height:50px;
+    }
+
+    .addtocart-btn{
+        width:70%;
+        height:32px;
+        font-size:13px;
+    } 
+}
+
+
+
+
+
+
+/* ===========================
+   Tablet (768px - 1024px)
+=========================== */
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .crackers-image-conataier{
+        display: none;
+    }   
+
+    .search-filter-container{
+        width: 100%;
+    }
+
+    .crackers-search-container{
+        height: 100px;
+        background: url('../Components/assets/searchbg.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center -30px;   /* Adhigama mela */
+    }
+    
+    .search-field-container{
+        flex-wrap: nowrap;
+    }
+
+    .crackers-search-field{
+        height: 30px;
+        width: 500px;
+        border: 2px solid #E4AA2B;
+    }
+
+    .filter-btn{
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+    }
+
+    .filter-options-container{
+        /* border: 1px solid; */
+    }
+
+    .category-selection{
+        height: 30px;
+        width: 570px;
+        margin-top: 10px;
+        border: 2px solid #E4AA2B;
+    }
+
+    @keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+    .filter-options-container > h3{
+        font-size: 15px;
+        font-family: "Josefin Sans", sans-serif;
+        margin-left: 0px;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .filter-btn{
+        background-color: #E4AA2B;
+        color: #3F0D12;
+    }
+
+    .filter-btn:hover{
+        background-color: #3F0D12;
+        color: #E4AA2B;
+        scale: 1.05;
+    }
+
+
+
+
+
+    .crackers-list-container{
+        width:95%;
+        margin:20px auto;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:12px;
+        justify-items:center;
+    }
+
+    .cracker-card{
+        width:250px;
+        height:auto;
+    }
+
+    .cracker-image-container{
+        height:120px;
+    }
+
+    .crackers-image{
+        height:120px;
+        width:100%;
+        object-fit:cover;
+
+    }
+
+    .cracker-card > p{
+        font-size:12px;
+        padding-left:8px;
+    }
+
+    .cracker-card > h3{
+        font-size:14px;
+        line-height:1.3;
+        padding-left:8px;
+    }
+
+    .price-container{
+        padding-left:8px;
+        gap:6px;
+    }
+
+    .mrp-price{
+        font-size:11px;
+    }
+
+    .quantity{
+        margin-left: 70px;
+        font-size:11px;
+    }
+
+    .selling-price{
+        font-size:16px;
+    }
+
+    .addtocart-btn-container{
+        height:50px;
+    }
+
+    .addtocart-btn{
+        width:70%;
+        height:32px;
+        font-size:13px;
+    } 
+}

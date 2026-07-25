@@ -1,0 +1,664 @@
+/* ==========================================================================
+   MS CRACKERS — About Page
+   Design tokens
+   ========================================================================== */
+
+.ms-about {
+  --primary: #3f0d12;
+  --primary-dark: #230609;
+  --secondary: #ca5310;
+  --gold: #e8b93f;
+  --gold-soft: #f3d989;
+  --cream: #fbf3e7;
+  --ember: #ff7a3d;
+  --ink: #1a0508;
+
+  --font-primary: "Winky Rough", sans-serif;
+  --font-secondary: "Josefin Sans", sans-serif;
+  --font-heading: "Bungee", sans-serif;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+
+  --shadow-soft: 0 20px 60px rgba(20, 4, 6, 0.45);
+  --shadow-card: 0 12px 30px rgba(20, 4, 6, 0.35);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  width: 100%;
+  overflow: clip;
+  background: var(--primary);
+  color: var(--cream);
+  font-family: var(--font-secondary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ms-about * {
+  box-sizing: border-box;
+}
+
+.ms-about img {
+  max-width: 100%;
+  display: block;
+}
+
+.ms-about a,
+.ms-about button {
+  font-family: inherit;
+}
+
+/* Respect reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  .ms-about *,
+  .ms-about *::before,
+  .ms-about *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Shared layout helpers
+   ========================================================================== */
+
+.ms-container {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 64px);
+}
+
+.ms-section {
+  position: relative;
+  padding-block: clamp(64px, 9vw, 120px);
+}
+
+.ms-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--gold-soft);
+  margin: 0 0 14px;
+}
+
+.ms-eyebrow::before,
+.ms-eyebrow::after {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.ms-eyebrow::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.ms-heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 0;
+}
+
+.ms-heading .accent {
+  color: var(--secondary);
+  -webkit-text-stroke: 1px var(--gold-soft);
+}
+
+/* Reveal-on-scroll utility, driven by IntersectionObserver toggling .in-view */
+.ms-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.ms-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ms-reveal-delay-1.in-view { transition-delay: 0.1s; }
+.ms-reveal-delay-2.in-view { transition-delay: 0.22s; }
+.ms-reveal-delay-3.in-view { transition-delay: 0.34s; }
+
+/* ==========================================================================
+   Ambient firework field — signature background, used behind hero + banner
+   ========================================================================== */
+
+.ms-spark-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ms-spark-field span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  box-shadow: 0 0 8px 2px rgba(232, 185, 63, 0.8);
+  animation: ms-twinkle 3.6s ease-in-out infinite;
+}
+
+@keyframes ms-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Radiating burst lines — a lightweight CSS stand-in for a firework shell */
+.ms-burst {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(232, 185, 63, 0.16) 0deg 2deg,
+      transparent 2deg 18deg
+    );
+  filter: blur(0.3px);
+  animation: ms-spin 40s linear infinite;
+}
+
+@keyframes ms-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.ms-hero {
+  position: relative;
+  padding-block: clamp(80px, 12vw, 140px) clamp(60px, 8vw, 100px);
+  background:
+    radial-gradient(60% 55% at 82% 18%, rgba(202, 83, 16, 0.35), transparent 65%),
+    radial-gradient(45% 45% at 12% 85%, rgba(232, 185, 63, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--primary-dark), var(--primary));
+}
+
+.ms-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 64px);
+}
+
+.ms-hero-copy .ms-heading {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+}
+
+.ms-hero-sub {
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--gold-soft);
+  margin: 18px 0 0;
+  max-width: 42ch;
+}
+
+.ms-hero-rule {
+  width: 96px;
+  height: 4px;
+  margin-top: 28px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--secondary), var(--gold));
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-hero-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: ms-shimmer 2.6s ease-in-out infinite;
+}
+
+@keyframes ms-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.ms-hero-logo-wrap {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 380px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.ms-hero-logo-wrap .ms-burst {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ms-hero-logo {
+  position: relative;
+  z-index: 2;
+  width: 82%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(232, 185, 63, 0.25), 0 30px 70px rgba(20, 4, 6, 0.6);
+  animation: ms-float 6s ease-in-out infinite;
+}
+
+@keyframes ms-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ==========================================================================
+   Owner section
+   ========================================================================== */
+
+.ms-owner {
+  background: var(--primary);
+}
+
+.ms-owner-grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: clamp(36px, 6vw, 72px);
+  align-items: center;
+}
+
+.ms-owner-card {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 320px);
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  border: 2px solid var(--gold);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.ms-owner-card::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: calc(var(--radius-lg) + 18px);
+  background: radial-gradient(circle, rgba(232, 185, 63, 0.35), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  z-index: -1;
+}
+
+.ms-owner-card:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 26px 70px rgba(20, 4, 6, 0.55);
+}
+
+.ms-owner-card:hover::before {
+  opacity: 1;
+}
+
+.ms-owner-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.ms-owner-card-glow {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 46px;
+  height: 46px;
+  pointer-events: none;
+}
+
+.ms-owner-card-glow span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px 3px rgba(232, 185, 63, 0.9);
+  animation: ms-twinkle 2.4s ease-in-out infinite;
+}
+
+.ms-owner-card-glow span:nth-child(1) { top: 4px; left: 6px; animation-delay: 0.2s; }
+.ms-owner-card-glow span:nth-child(2) { top: 20px; left: 26px; animation-delay: 0.7s; }
+.ms-owner-card-glow span:nth-child(3) { top: 34px; left: 10px; animation-delay: 1.1s; }
+
+.ms-owner-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--gold-soft);
+  margin: 0;
+}
+
+.ms-owner-role {
+  font-family: var(--font-primary);
+  color: var(--secondary);
+  font-size: 1.15rem;
+  margin: 6px 0 0;
+}
+
+.ms-owner-exp {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 185, 63, 0.5);
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+
+.ms-owner-text {
+  margin-top: 20px;
+  color: rgba(251, 243, 231, 0.85);
+  max-width: 60ch;
+}
+
+/* ==========================================================================
+   Why Choose Us
+   ========================================================================== */
+
+.ms-why {
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+}
+
+.ms-why-head {
+  text-align: center;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.ms-why-head .ms-eyebrow {
+  justify-content: center;
+}
+
+.ms-card-grid {
+  margin-top: clamp(40px, 6vw, 64px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ms-card {
+  position: relative;
+  padding: 30px 26px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(232, 185, 63, 0.18);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.ms-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(202, 83, 16, 0.7);
+  box-shadow: 0 18px 46px rgba(202, 83, 16, 0.35), 0 0 30px rgba(202, 83, 16, 0.25);
+}
+
+.ms-card-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(160deg, var(--secondary), var(--primary-dark));
+  color: var(--gold-soft);
+  margin-bottom: 18px;
+}
+
+.ms-card-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.ms-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin: 0 0 10px;
+}
+
+.ms-card p {
+  margin: 0;
+  color: rgba(251, 243, 231, 0.75);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Promise / Vision / Mission
+   ========================================================================== */
+
+.ms-values {
+  background: var(--primary-dark);
+}
+
+.ms-promise {
+  position: relative;
+  padding: clamp(40px, 6vw, 60px);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(202, 83, 16, 0.18), rgba(63, 13, 18, 0.4));
+  border: 1px solid rgba(232, 185, 63, 0.25);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto clamp(48px, 6vw, 72px);
+}
+
+.ms-promise h2 {
+  font-family: var(--font-heading);
+  color: var(--gold-soft);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 0 0 18px;
+}
+
+.ms-promise p {
+  font-family: var(--font-primary);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--cream);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+.ms-vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.ms-vm-card {
+  padding: 32px 30px;
+  border-radius: var(--radius-md);
+  background: rgba(251, 243, 231, 0.03);
+  border-left: 3px solid var(--secondary);
+}
+
+.ms-vm-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(232, 185, 63, 0.14);
+  color: var(--gold-soft);
+  margin-bottom: 16px;
+}
+
+.ms-vm-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ms-vm-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--cream);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.ms-vm-card p {
+  margin: 0;
+  color: rgba(251, 243, 231, 0.8);
+}
+
+/* ==========================================================================
+   Bottom banner / CTA
+   ========================================================================== */
+
+.ms-banner {
+  position: relative;
+  text-align: center;
+  padding-block: clamp(70px, 10vw, 110px);
+  background:
+    radial-gradient(60% 80% at 50% 0%, rgba(202, 83, 16, 0.4), transparent 70%),
+    linear-gradient(180deg, var(--primary-dark), var(--ink));
+  overflow: hidden;
+}
+
+.ms-banner-heading {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.8rem, 4.4vw, 3rem);
+  max-width: 16ch;
+  margin-inline: auto;
+}
+
+.ms-banner-sub {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-primary);
+  color: var(--gold-soft);
+  margin: 16px auto 0;
+  max-width: 46ch;
+}
+
+.ms-cta-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 34px;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--secondary), var(--ember));
+  color: var(--cream);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(202, 83, 16, 0.45);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.ms-cta-btn:hover,
+.ms-cta-btn:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 20px 46px rgba(202, 83, 16, 0.6);
+}
+
+.ms-cta-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease);
+}
+
+.ms-cta-btn:hover::before {
+  left: 130%;
+}
+
+.ms-cta-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Focus visibility across the page */
+.ms-about a:focus-visible,
+.ms-about button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .ms-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ms-hero-copy .ms-eyebrow,
+  .ms-hero-rule {
+    margin-inline: auto;
+  }
+
+  .ms-hero-logo-wrap {
+    order: -1;
+    width: min(70%, 280px);
+  }
+
+  .ms-owner-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ms-owner-text {
+    margin-inline: auto;
+  }
+
+  .ms-owner-exp {
+    margin-inline: auto;
+  }
+
+  .ms-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ms-vm-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .ms-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ms-owner-card {
+    width: min(100%, 260px);
+  }
+}

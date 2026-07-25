@@ -1,0 +1,997 @@
+/* .login-main-container{
+    height: 100vh;
+    width: 100%;
+    background:linear-gradient(
+        135deg,
+        #2B080C 0%,
+        #3F0D12 40%,
+        #5B161E 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-container{
+    height: 500px;
+    width: 700px;
+    border: 1px solid;
+    border-color:rgba(255,215,0,.7);
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,.6),
+        0 0 45px rgba(255,140,0,.4),
+        0 12px 35px rgba(0,0,0,.4);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.login-form-container > h1 {
+    text-align: center;
+    color: white;
+    font-family: "Bungee", sans-serif;
+}
+
+
+.login-form{
+    height: 400px;
+    width: 100%;
+    border-top: 1px solid #C9A227;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.email-field{
+    margin-top: 70px;
+}
+
+.password-field{
+    margin-top: 20px;
+}
+
+
+.email-field,.password-field{
+    height: 50px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-icon,.password-icon{
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.email-icon > i{
+    font-size: 20px;
+    color: #3F0D12;
+}
+
+.password-icon > i{
+    font-size: 20px;
+    color: #3F0D12;
+}
+
+.email-input,.password-input{
+    height: 96%;
+    width: 100%;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #3F0D12;
+    padding-left: 10px;
+    font-family: "Winky Rough", sans-serif;
+    color: #3F0D12;
+    font-size: 15px;
+}
+
+
+.login-btn{
+    height: 50px;
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "Bungee", sans-serif;
+    color: #3F0D12;
+    background-color: #C9A227;
+    transition: all 0.1s ease-in-out;
+}
+
+.login-btn:hover{
+    background-color: #3F0D12;
+    box-shadow: 2px 2px 10px #C9A227;
+    color: #C9A227;
+    scale: 1.05;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                    BACKGROUND
+==========================================================*/
+
+.login-main-container{
+    position:relative;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #2B080C 0%,
+        #3F0D12 40%,
+        #5B161E 100%
+    );
+}
+
+/*==========================================================
+              Animated Gradient Layer
+==========================================================*/
+
+.login-main-container::before{
+
+    content:"";
+
+    position:absolute;
+    inset:-20%;
+
+    background:
+    radial-gradient(circle at 20% 30%,rgba(255,215,0,.12),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(255,120,0,.12),transparent 35%),
+    radial-gradient(circle at 50% 80%,rgba(255,255,255,.05),transparent 35%);
+
+    animation:bgMove 15s linear infinite;
+}
+
+@keyframes bgMove{
+
+    0%{
+        transform:translate(0,0) rotate(0deg);
+    }
+
+    50%{
+        transform:translate(-40px,-30px) rotate(5deg);
+    }
+
+    100%{
+        transform:translate(0,0) rotate(0deg);
+    }
+
+}
+
+/*==========================================================
+              Floating Golden Particles
+==========================================================*/
+
+.login-main-container::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+    radial-gradient(#FFD700 1.3px,transparent 1px);
+
+    background-size:80px 80px;
+
+    opacity:.15;
+
+    animation:particleMove 25s linear infinite;
+}
+
+@keyframes particleMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-200px);
+    }
+
+}
+
+/*==========================================================
+                  LOGIN CARD
+==========================================================*/
+
+.login-form-container{
+
+    position:relative;
+    z-index:10;
+
+    height:500px;
+    width:700px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,215,0,.7);
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(14px);
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+
+    box-shadow:
+    0 0 20px rgba(255,215,0,.5),
+    0 0 50px rgba(255,140,0,.3),
+    0 20px 60px rgba(0,0,0,.45);
+
+    animation:
+    loginEntry 1s ease,
+    floating 6s ease-in-out infinite,
+    glowPulse 4s ease-in-out infinite;
+}
+
+/*==========================================================
+           Moving Golden Border
+==========================================================*/
+
+.login-form-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+    left:-50%;
+
+    width:200%;
+    height:200%;
+
+    background:conic-gradient(
+        transparent,
+        rgba(255,215,0,.9),
+        transparent,
+        transparent
+    );
+
+    animation:borderRotate 5s linear infinite;
+}
+
+.login-form-container::after{
+
+    content:"";
+
+    position:absolute;
+    inset:2px;
+
+    border-radius:20px;
+
+    background:rgba(38,8,10,.96);
+}
+
+@keyframes borderRotate{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*==========================================================
+                  CONTENT
+==========================================================*/
+
+.login-form-container>*{
+
+    position:relative;
+    z-index:2;
+
+}
+
+/*==========================================================
+                  TITLE
+==========================================================*/
+
+.login-form-container h1{
+
+    text-align:center;
+
+    color:white;
+
+    font-family:"Bungee",sans-serif;
+
+    letter-spacing:3px;
+
+    text-shadow:
+    0 0 10px gold,
+    0 0 25px orange;
+
+    animation:titleGlow 2.5s ease-in-out infinite;
+
+}
+
+@keyframes titleGlow{
+
+    0%,100%{
+
+        text-shadow:
+        0 0 8px gold,
+        0 0 20px orange;
+
+    }
+
+    50%{
+
+        text-shadow:
+        0 0 18px gold,
+        0 0 45px orange;
+
+    }
+
+}
+
+/*==========================================================
+                FORM
+==========================================================*/
+
+.login-form{
+
+    height:400px;
+
+    width:100%;
+
+    border-top:1px solid #C9A227;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+/*==========================================================
+              INPUT WRAPPER
+==========================================================*/
+
+.email-field,
+.password-field{
+
+    width:500px;
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    animation:slideLeft .8s forwards;
+
+    opacity:0;
+
+}
+
+.email-field{
+
+    margin-top:70px;
+
+}
+
+.password-field{
+
+    margin-top:25px;
+
+    animation-delay:.25s;
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*==========================================================
+                    ICON
+==========================================================*/
+
+.email-icon,
+.password-icon{
+
+    width:55px;
+
+    height:100%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:8px 0 0 8px;
+
+    transition:.4s;
+
+}
+
+.email-icon i,
+.password-icon i{
+
+    color:#3F0D12;
+
+    font-size:20px;
+
+}
+
+/*==========================================================
+                    INPUT
+==========================================================*/
+
+.email-input,
+.password-input{
+
+    width:100%;
+
+    height:97%;
+
+    border:none;
+
+    outline:none;
+
+    padding-left:15px;
+
+    font-size:15px;
+
+    color:#3F0D12;
+
+    font-family:"Winky Rough",sans-serif;
+
+    border-radius:0 8px 8px 0;
+
+    transition:.4s;
+
+}
+
+.password-input{
+    height: 96%;
+}
+
+.email-field:hover,
+.password-field:hover{
+
+    transform:scale(1.03);
+
+}
+
+.email-field:hover .email-icon,
+.password-field:hover .password-icon{
+
+    background:#FFD700;
+
+}
+
+.email-input:focus,
+.password-input:focus{
+
+    box-shadow:
+    inset 0 0 12px rgba(255,215,0,.5);
+
+}
+
+/*==========================================================
+                LOGIN BUTTON
+==========================================================*/
+
+.login-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:52px;
+
+    width:210px;
+
+    margin-top:35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-family:"Bungee",sans-serif;
+
+    color:#3F0D12;
+
+    background:#C9A227;
+
+    transition:.35s;
+
+    animation:buttonPop .9s forwards;
+
+    animation-delay:.45s;
+
+    opacity:0;
+
+}
+
+@keyframes buttonPop{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.login-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-130%;
+
+    width:70%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.8),
+
+        transparent
+
+    );
+
+    transform:skewX(-25deg);
+
+}
+
+.login-btn:hover::before{
+
+    animation:shine .8s;
+
+}
+
+@keyframes shine{
+
+    to{
+
+        left:180%;
+
+    }
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-5px) scale(1.05);
+
+    background:#3F0D12;
+
+    color:#FFD700;
+
+    box-shadow:
+
+    0 0 18px gold,
+
+    0 0 35px orange,
+
+    0 0 60px rgba(255,215,0,.5);
+
+}
+
+.login-btn:active{
+
+    transform:scale(.95);
+
+}
+
+/*==========================================================
+              CARD FLOATING
+==========================================================*/
+
+@keyframes floating{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/*==========================================================
+                CARD ENTRY
+==========================================================*/
+
+@keyframes loginEntry{
+
+    0%{
+
+        opacity:0;
+
+        transform:translateY(70px) scale(.85);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:translateY(-8px) scale(1.02);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+/*==========================================================
+              GOLD GLOW
+==========================================================*/
+
+@keyframes glowPulse{
+
+    0%,100%{
+
+        box-shadow:
+
+        0 0 18px rgba(255,215,0,.5),
+
+        0 0 45px rgba(255,140,0,.25),
+
+        0 15px 40px rgba(0,0,0,.4);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+        0 0 35px rgba(255,215,0,.9),
+
+        0 0 70px rgba(255,140,0,.6),
+
+        0 18px 55px rgba(0,0,0,.45);
+
+    }
+
+}
+
+/*==========================================================
+            INPUT FOCUS GLOW
+==========================================================*/
+
+.email-field:focus-within,
+
+.password-field:focus-within{
+
+    transform:scale(1.03);
+
+}
+
+.email-field:focus-within .email-icon,
+
+.password-field:focus-within .password-icon{
+
+    background:#FFD700;
+
+}
+
+.email-field:focus-within .email-input,
+
+.password-field:focus-within .password-input{
+
+    box-shadow:
+
+    inset 0 0 18px rgba(255,215,0,.45),
+
+    0 0 12px rgba(255,215,0,.3);
+
+}
+
+/*==========================================================
+            FIREWORK SPARKLES
+==========================================================*/
+
+.spark{
+
+    position:absolute;
+
+    width:5px;
+
+    height:5px;
+
+    background:#FFD700;
+
+    border-radius:50%;
+
+    box-shadow:0 0 12px gold;
+
+    animation:sparkFloat linear infinite;
+
+}
+
+.spark:nth-child(1){
+
+    left:12%;
+
+    animation-duration:9s;
+
+}
+
+.spark:nth-child(2){
+
+    left:35%;
+
+    animation-duration:7s;
+
+}
+
+.spark:nth-child(3){
+
+    left:60%;
+
+    animation-duration:10s;
+
+}
+
+.spark:nth-child(4){
+
+    left:82%;
+
+    animation-duration:8s;
+
+}
+
+@keyframes sparkFloat{
+
+    from{
+
+        transform:translateY(100vh) scale(.2);
+
+        opacity:0;
+
+    }
+
+    15%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(-120vh) scale(1.4);
+
+        opacity:0;
+
+    }
+
+}
+
+/*==========================================================
+          MOUSE HOVER CARD
+==========================================================*/
+
+.login-form-container:hover{
+
+    transform:translateY(-8px) scale(1.01);
+
+    transition:.4s;
+
+}
+
+/*==========================================================
+          SCROLL BAR
+==========================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#C9A227;
+
+    border-radius:20px;
+
+}
+
+/*==========================================================
+            RESPONSIVE
+==========================================================*/
+
+@media(max-width:768px){
+
+.login-form-container{
+
+    width:92%;
+
+    height:500px;
+
+}
+
+.email-field,
+
+.password-field{
+
+    width:88%;
+
+}
+
+.login-form-container h1{
+
+    font-size:24px;
+
+}
+
+.login-btn{
+
+    width:180px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.login-form-container{
+
+    height:470px;
+
+}
+
+.email-field,
+
+.password-field{
+
+    width:90%;
+
+    height:50px;
+
+}
+
+.login-form-container h1{
+
+    font-size:20px;
+
+    letter-spacing:1px;
+
+}
+
+.login-btn{
+
+    width:160px;
+
+    height:48px;
+
+    font-size:13px;
+
+}
+
+}
+
+
+.password-show-btn{
+    margin-top: 20px;
+    margin-left: -395px;
+    height: 30px;
+    font-family: "Winky Rough", sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #C9A227;
+    color: #3F0D12;
+    cursor: pointer;
+    animation: fadeIn 1.5s ease-in 1;
+}
+
+.password-show-btn:hover{
+    background-color: orange;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/*==========================================================
+              END
+==========================================================*/

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useContext } from "react";
+// import { useContext } from "react";
 import { useCart } from "../Components/CartContext";
 
 import mainLogo from '../Components/assets/Main Logo.png';
@@ -114,7 +114,7 @@ export default function Navbar() {
 
             <div className='mobile-nav-container'>
                 <div className='mobile-logo-container'>
-                    <img src={mainLogo} className='mobile-nav-logo-img' />
+                    <img src={mainLogo} className='mobile-nav-logo-img'  alt='Logo'/>
                 </div>
 
                 <div className='mobile-btn-container'>

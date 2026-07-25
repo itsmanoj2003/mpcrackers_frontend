@@ -26,7 +26,7 @@ export default function Home() {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const [timeLeft] = useState(getTimeLeft());
 
   // ================= FIREWORKS =================
 useEffect(() => {
@@ -167,21 +167,21 @@ useEffect(() => {
               <p className='features-para'>200+ Varieties</p>
             </div>
             <div className='feature'>
-              <i class="fa-solid fa-tag feature-icon"></i>
+              <i className="fa-solid fa-tag feature-icon"></i>
               <p className='features-para'>Upto 80% Discount</p>
             </div>
             <div className='feature'>
-              <i class="fa-regular fa-money-bill-1 feature-icon"></i>
+              <i className="fa-regular fa-money-bill-1 feature-icon"></i>
               <p className='features-para'>Fast & Secure Payments</p>
             </div>
             <div className='feature'>
-              <i class="fa-solid fa-truck-fast feature-icon"></i>
+              <i className="fa-solid fa-truck-fast feature-icon"></i>
               <p className='features-para'>Free Shipping All Over India</p>
             </div>
       </div>
 
       <div className='welcome-msg-container'>
-        <img src={hands} className='hands-image'/>
+        <img src={hands} className='hands-image' alt="Celebrate Diwali"/>
         <div className='welcome-msg'>
             <h2 className='welcome-title'>Celebrate This Diwali With Us</h2>
             <p className='welcome-para'>May your home be filled with happiness, prosperity, and countless moments of joy. Join us in celebrating the Festival of Lights with premium fireworks, exciting offers, and unforgettable memories. Let's light up the sky together! ✨</p>

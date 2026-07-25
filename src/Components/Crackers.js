@@ -61,7 +61,7 @@ export default function Crackers() {
 
             <div className='crackers-search-container'>
                 <div className='crackers-image-conataier'>
-                    <img src={crackers2} className='crackers-img' />
+                    <img src={crackers2} className='crackers-img' alt='Banner'/>
                 </div>
 
                 <div className='search-filter-container'>
@@ -82,7 +82,7 @@ export default function Crackers() {
                 </div>
 
                 <div className='crackers-image-conataier'>
-                    <img src={crackers} className='crackers-img' />
+                    <img src={crackers} className='crackers-img' alt='Banner'/>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@ export default function Crackers() {
                             <div className="cracker-image-container">
                                 <img
                                     src={`https://mpcrackers-api.onrender.com${item.productImage}`}
-                                    alt={item.productName}
+                                    alt={item.productName || 'Product'}
                                     className="crackers-image"
                                 />
                             </div>

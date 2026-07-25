@@ -189,7 +189,7 @@ export default function Cart() {
                             <div key={item._id} className="cart-item-container">
 
                                 <div className="cart-item-image-container">
-                                    <img src={`https://mpcrackers-api.onrender.com${item.productImage}`} className="cart-item-image" alt={item.productName} />
+                                    <img src={`https://mpcrackers-api.onrender.com${item.productImage}`} className="cart-item-image" alt={item.productName || 'Product'} />
                                 </div>
 
                                 <div className="cart-item-info-container">
@@ -227,7 +227,7 @@ export default function Cart() {
                         (
                             <div className="empty-cart">
 
-                                <img src={mainLogo} className='cart-shop-logo' />
+                                <img src={mainLogo} className='cart-shop-logo' alt='Logo'/>
 
                                 <h2>Your Cart is Empty</h2>
 

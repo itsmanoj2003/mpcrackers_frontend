@@ -269,7 +269,7 @@ export default function About() {
             Browse our collection and let&rsquo;s make your next festival one to remember.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="ms-cta-btn ms-reveal ms-reveal-delay-2"
             aria-label="Contact MS Crackers"
           >

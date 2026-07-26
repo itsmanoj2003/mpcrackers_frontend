@@ -57,6 +57,8 @@ export default function Navbar() {
 
     const { cart } = useCart();
 
+    const isAdmin = localStorage.getItem("admin") === "true";
+
     return (
 
         <>
@@ -66,7 +68,7 @@ export default function Navbar() {
                     <img src={mainLogo} className='logo-image' alt='Logo' />
                 </div>
 
-                <div className='nav-links-container'>
+                <div className='nav-links-container' style={{ width: isAdmin ? "570px" : "500px" }}>
 
                     <NavLink
                         to='/'
@@ -96,6 +98,15 @@ export default function Navbar() {
                         Contact
                     </NavLink>
 
+                    {isAdmin && (
+                        <NavLink
+                            to="/admin"
+                            className={`pc-links ${scrolled ? "scrolled-text" : ""}`}
+                        >
+                            Admin
+                        </NavLink>
+                    )}
+
                     <div className='cart-btn-container'>
                         <button className='cart-btn' onClick={handleCart}>
                             <i className="fa-solid fa-cart-shopping cart-icon"></i>
@@ -114,7 +125,7 @@ export default function Navbar() {
 
             <div className='mobile-nav-container'>
                 <div className='mobile-logo-container'>
-                    <img src={mainLogo} className='mobile-nav-logo-img'  alt='Logo'/>
+                    <img src={mainLogo} className='mobile-nav-logo-img' alt='Logo' />
                 </div>
 
                 <div className='mobile-btn-container'>

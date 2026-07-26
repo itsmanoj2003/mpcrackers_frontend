@@ -773,3 +773,28 @@
   background-color: rgb(198, 18, 18);
   scale: 1.03;
 }
+
+
+
+
+/* Media Query */
+/* ===========================
+   350px - 400px
+=========================== */
+
+@media only screen and (min-width:350px) and (max-width:400px){
+  .view-orders-btn,.logout-btn{
+    width: 100px;
+  }
+}
+
+
+/* ===========================
+   Up to 430px
+=========================== */
+
+@media (max-width:430px){
+  .view-orders-btn,.logout-btn{
+    width: 100px;
+  }
+}

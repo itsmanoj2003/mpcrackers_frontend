@@ -316,7 +316,7 @@ const Admin = () => {
           <span className="fx-spark fx-spark-5" />
         </div>
         <div className="ap-hero-content">
-          <h1 className="ap-hero-title">ADMIN PRODUCT MANAGEMENT</h1>
+          <h1 className="ap-hero-title" style={{marginTop:'30px'}}>ADMIN PRODUCT MANAGEMENT</h1>
           <button className="view-orders-btn" onClick={handleNavigate}>View Orders</button>
           <button className="logout-btn" onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i> Logout</button>
           <p className="ap-hero-subtitle">

@@ -9,13 +9,35 @@ const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || "https://mpcrackers-api.onrender.com";
 
 const CATEGORIES = [
-  "Bomb",
-  "Sparklers",
+  "One Sound Crackers",
   "Flower Pots",
-  "Rockets",
   "Ground Chakkars",
+  "Atom Bombs",
+  "Paper Blasts",
+  "Rockets",
+  "Soil Pots",
+  "Time Pass Crackers",
+  "Matches",
+  "Kids Items",
+  "Handles",
+  "Twinkling Stars",
+  "Ultra Wheels",
+  "Peacock Fountain",
+  "Fancy Items",
+  "Gun Shower",
+  "Colour Fountain",
+  "Special Sparklers",
+  "Special Crackers",
+  "Single Shots",
+  "Special Single Shot",
+  "Mega Deluxe",
+  "Repeating Shots",
+  "Special Shots",
+  "Electric Crackers",
+  "Guns",
+  "Sparklers",
   "Gift Boxes",
-  "Fancy Crackers",
+  "Family Packs"
 ];
 
 const STATUSES = ["Available", "Out of Stock", "Hidden"];

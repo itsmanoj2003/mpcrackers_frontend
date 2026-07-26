@@ -366,6 +366,10 @@
         color: white;
         padding: 0px;
     }
+
+    .loading-text{
+        font-size: 12px;
+    }
 }
 
 
@@ -406,6 +410,10 @@
         margin-top: 20px;
         color: white;
         padding: 0px;
+    }
+
+    .loading-text{
+        font-size: 12px;
     }
 }
 

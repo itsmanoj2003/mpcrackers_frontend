@@ -372,10 +372,26 @@ const ViewOrders = () => {
     window.print();
   };
 
-  const handleDeleteConfirm = (order) => {
-    // UI-only: no backend endpoint requested for deletion yet.
-    setOrders((prev) => prev.filter((o) => o._id !== order._id));
-    setDeletingOrder(null);
+  const handleDeleteConfirm = async (order) => {
+    try {
+
+      await axios.delete(
+        `https://mpcrackers-api.onrender.com/mpcrackers/deleteorder/${order._id}`
+      );
+
+      setOrders((prev) =>
+        prev.filter((o) => o._id !== order._id)
+      );
+
+      setDeletingOrder(null);
+
+      alert("Order deleted successfully");
+
+    } catch (err) {
+
+      alert("Unable to delete order");
+
+    }
   };
 
 
@@ -383,7 +399,7 @@ const ViewOrders = () => {
 
 
   const navigate = useNavigate()
-  function handleBack(){
+  function handleBack() {
     navigate(-1)
   }
 
@@ -397,9 +413,9 @@ const ViewOrders = () => {
           <span className="vo-spark vo-spark-4" />
           <span className="vo-spark vo-spark-5" />
         </div>
-        <h1 className="vo-hero-title" style={{marginTop:'30px'}}>VIEW CUSTOMER ORDERS</h1>
+        <h1 className="vo-hero-title" style={{ marginTop: '30px' }}>VIEW CUSTOMER ORDERS</h1>
         <p className="vo-hero-subtitle">Manage and monitor all customer orders in one place.</p>
-        <button onClick={handleBack} style={{height:'40px',width:'200px',marginTop:'10px',borderRadius:'5px',border:'none',backgroundColor:'#C9A227',color:'#3F0D12',fontWeight:'bold',cursor:'pointer'}}>Back</button>
+        <button onClick={handleBack} style={{ height: '40px', width: '200px', marginTop: '10px', borderRadius: '5px', border: 'none', backgroundColor: '#C9A227', color: '#3F0D12', fontWeight: 'bold', cursor: 'pointer' }}>Back</button>
       </section>
 
       <section className="vo-controls" aria-label="Search, filter and sort orders">

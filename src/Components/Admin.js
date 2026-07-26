@@ -628,7 +628,7 @@ const Admin = () => {
                       <span className="ap-pc-mrp">₹{p.mrpPrice}</span>
                       <span className="ap-pc-selling">₹{p.sellingPrice}</span>
                     </div>
-                    <span className="ap-pc-qty">Qty: {p.quantity} boxes</span>
+                    <span className="ap-pc-qty">Qty: {p.quantity} Pcs</span>
                   </div>
                   <div className="ap-pc-actions">
                     <button className="ap-pc-btn ap-pc-edit" onClick={() => handleEdit(p)}>

@@ -149,8 +149,8 @@ export default function Crackers() {
 
                                 <div className="cracker-image-container">
                                     <img
-                                        src={`https://mpcrackers-api.onrender.com${item.productImage}`}
-                                        alt={item.productName || 'Product'}
+                                        src={item.productImage}
+                                        alt={item.productName}
                                         className="crackers-image"
                                     />
                                 </div>

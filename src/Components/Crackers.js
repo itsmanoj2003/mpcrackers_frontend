@@ -9,7 +9,37 @@ import crackers2 from '../Components/assets/crackers2.png'
 import axios from 'axios'
 export default function Crackers() {
 
-    const categories = ['Bomb', 'Sparkles', 'Flower Pots', 'Rockets', 'Ground Chakkars', 'Gift Boxes', 'Fancy Crackers']
+    const categories = [
+        "One Sound Crackers",
+        "Flower Pots",
+        "Ground Chakkars",
+        "Atom Bombs",
+        "Paper Blasts",
+        "Rockets",
+        "Soil Pots",
+        "Time Pass Crackers",
+        "Matches",
+        "Kids Items",
+        "Handles",
+        "Twinkling Stars",
+        "Ultra Wheels",
+        "Peacock Fountain",
+        "Fancy Items",
+        "Gun Shower",
+        "Colour Fountain",
+        "Special Sparklers",
+        "Special Crackers",
+        "Single Shots",
+        "Special Single Shot",
+        "Mega Deluxe",
+        "Repeating Shots",
+        "Special Shots",
+        "Electric Crackers",
+        "Guns",
+        "Sparklers",
+        "Gift Boxes",
+        "Family Packs"
+    ]
 
     const [filter, setFilter] = useState(false)
     function handleFilter() {

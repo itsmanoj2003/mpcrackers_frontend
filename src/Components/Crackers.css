@@ -275,6 +275,14 @@
 }
 
 
+.loading-text{
+    width: 100%;
+    text-align: center;
+    color: #C9A227;
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 50px;
+}
+
 
 
 
@@ -312,6 +320,10 @@
         margin-top: 20px;
         color: white;
         padding: 0px;
+    }
+
+    .loading-text{
+        font-size: 12px;
     }
 }
 

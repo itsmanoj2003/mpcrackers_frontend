@@ -54,14 +54,30 @@ export default function Crackers() {
         (searchCategory === 'All' || item.category === searchCategory)
     )
 
-    const {cart, addToCart } = useCart();
+    const { cart, addToCart } = useCart();
+
+
+    // Loading
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get("https://mpcrackers-api.onrender.com/mpcrackers/getcrackers")
+            .then(res => {
+                setCrackdata(res.data);
+            })
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false));
+    }, []);
+
+
+
 
     return (
         <div className='crcakers-main-container'>
 
             <div className='crackers-search-container'>
                 <div className='crackers-image-conataier'>
-                    <img src={crackers2} className='crackers-img' alt='Banner'/>
+                    <img src={crackers2} className='crackers-img' alt='Banner' />
                 </div>
 
                 <div className='search-filter-container'>
@@ -82,55 +98,61 @@ export default function Crackers() {
                 </div>
 
                 <div className='crackers-image-conataier'>
-                    <img src={crackers} className='crackers-img' alt='Banner'/>
+                    <img src={crackers} className='crackers-img' alt='Banner' />
                 </div>
             </div>
 
 
             <div className='crackers-list-container'>
-                {filterCarackers.map((item) => {
+                {loading ? (
+                    <h2 className="loading-text">Loading Crackers...</h2>
+                ) : (
+                    filterCarackers.map((item) => {
 
-                    const isInCart = cart.some(
-                        cartItem => cartItem._id === item._id
-                    );
+                        const isInCart = cart.some(
+                            cartItem => cartItem._id === item._id
+                        );
 
-                    return (
+                        return (
 
-                        <div className="cracker-card" key={item._id}>
+                            <div className="cracker-card" key={item._id}>
 
-                            <div className="cracker-image-container">
-                                <img
-                                    src={`https://mpcrackers-api.onrender.com${item.productImage}`}
-                                    alt={item.productName || 'Product'}
-                                    className="crackers-image"
-                                />
+                                <div className="cracker-image-container">
+                                    <img
+                                        src={`https://mpcrackers-api.onrender.com${item.productImage}`}
+                                        alt={item.productName || 'Product'}
+                                        className="crackers-image"
+                                    />
+                                </div>
+
+                                <p>{item.category}</p>
+
+                                <h3>
+                                    {item.productName.length > 20
+                                        ? item.productName.slice(0, 20) + "..."
+                                        : item.productName}
+                                </h3>
+
+                                <div className="price-container">
+                                    <p className="mrp-price">₹{item.mrpPrice}</p>
+                                    <h4 className="selling-price">₹{item.sellingPrice}</h4>
+                                    <p className="quantity">Qty: {item.quantity} Pcs</p>
+                                </div>
+
+                                <div className="addtocart-btn-container">
+                                    <button
+                                        className="addtocart-btn"
+                                        onClick={() => addToCart(item)}
+                                    >
+                                        {isInCart ? "Added to Cart" : "Add to Cart"}
+                                    </button>
+                                </div>
+
                             </div>
 
-                            <p>{item.category}</p>
-
-                            <h3>
-                                {item.productName.length > 20
-                                    ? item.productName.slice(0, 20) + "..."
-                                    : item.productName}
-                            </h3>
-
-                            <div className="price-container">
-                                <p className="mrp-price">₹{item.mrpPrice}</p>
-                                <h4 className="selling-price">₹{item.sellingPrice}</h4>
-                                <p className="quantity">Qty: {item.quantity} Pcs</p>
-                            </div>
-
-                            <div className="addtocart-btn-container">
-
-                                <button className="addtocart-btn" onClick={() => addToCart(item)}> {isInCart ? "Added to Cart" : "Add to Cart"} </button>
-
-                            </div>
-
-                        </div>
-
-                    );
-
-                })}
+                        );
+                    })
+                )}
             </div>
 
         </div>

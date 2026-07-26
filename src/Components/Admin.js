@@ -96,28 +96,45 @@ const Admin = () => {
 
   // ---------- fetch products ----------
   const fetchProducts = useCallback(async () => {
-    setLoadingProducts(true);
     try {
-      const params = {};
-      if (search) params.search = search;
-      if (filter !== "All") params.status = filter;
-      const { data } = await axios.get(API_BASE_URL, { params });
+      setLoadingProducts(true);
+      const { data } = await axios.get(API_BASE_URL);
       setProducts(data);
     } catch (err) {
-      showToast(
-        err.response?.data?.message || "Failed to load products.",
-        "error"
-      );
+      showToast("Failed to load products.", "error");
     } finally {
       setLoadingProducts(false);
     }
-  }, [search, filter, showToast]);
+  }, [showToast]);
+
+
+
+  // Search Field
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  useEffect(() => {
+
+    let data = [...products];
+
+    if (search.trim()) {
+      data = data.filter((item) =>
+        item.productName.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    if (filter !== "All") {
+      data = data.filter((item) => item.status === filter);
+    }
+
+    setFilteredProducts(data);
+
+  }, [products, search, filter]);
 
   useEffect(() => {
-    const t = setTimeout(fetchProducts, search ? 350 : 0);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, filter]);
+    fetchProducts();
+  }, [fetchProducts]);
+
+
 
   // ---------- selling price auto-calc ----------
   useEffect(() => {
@@ -312,7 +329,7 @@ const Admin = () => {
           <span className="fx-spark fx-spark-5" />
         </div>
         <div className="ap-hero-content">
-          <h1 className="ap-hero-title" style={{marginTop:'30px'}}>ADMIN PRODUCT MANAGEMENT</h1>
+          <h1 className="ap-hero-title" style={{ marginTop: '30px' }}>ADMIN PRODUCT MANAGEMENT</h1>
           <button className="view-orders-btn" onClick={handleNavigate}>View Orders</button>
           <button className="logout-btn" onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i> Logout</button>
           <p className="ap-hero-subtitle">
@@ -604,7 +621,7 @@ const Admin = () => {
             </div>
           ) : (
             <div className="ap-product-grid">
-              {products.map((p) => (
+              {filteredProducts.map((p) => (
                 <div className="ap-product-card" key={p._id}>
                   <div className="ap-pc-image-wrap">
                     {p.productImage ? (

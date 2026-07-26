@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./ViewOrders.css";
+import { useNavigate } from "react-router-dom";
 
 const formatDate = (iso) =>
   new Date(iso).toLocaleDateString("en-IN", {
@@ -377,6 +378,15 @@ const ViewOrders = () => {
     setDeletingOrder(null);
   };
 
+
+
+
+
+  const navigate = useNavigate()
+  function handleBack(){
+    navigate(-1)
+  }
+
   return (
     <div className="vo-page">
       <section className="vo-hero">
@@ -387,8 +397,9 @@ const ViewOrders = () => {
           <span className="vo-spark vo-spark-4" />
           <span className="vo-spark vo-spark-5" />
         </div>
-        <h1 className="vo-hero-title">VIEW CUSTOMER ORDERS</h1>
+        <h1 className="vo-hero-title" style={{marginTop:'30px'}}>VIEW CUSTOMER ORDERS</h1>
         <p className="vo-hero-subtitle">Manage and monitor all customer orders in one place.</p>
+        <button onClick={handleBack} style={{height:'40px',width:'200px',marginTop:'10px',borderRadius:'5px',border:'none',backgroundColor:'#C9A227',color:'#3F0D12',fontWeight:'bold',cursor:'pointer'}}>Back</button>
       </section>
 
       <section className="vo-controls" aria-label="Search, filter and sort orders">

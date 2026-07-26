@@ -5,8 +5,6 @@ import "./Admin.css";
 
 const API_BASE_URL =
   process.env.REACT_APP_API_URL || "https://mpcrackers-api.onrender.com/mpcrackers";
-const SERVER_URL =
-  process.env.REACT_APP_SERVER_URL || "https://mpcrackers-api.onrender.com";
 
 const CATEGORIES = [
   "One Sound Crackers",
@@ -264,9 +262,7 @@ const Admin = () => {
       description: product.description || "",
       status: product.status || "Available",
     });
-    setImagePreview(
-      product.productImage ? `${SERVER_URL}${product.productImage}` : ""
-    );
+    setImagePreview(product.productImage || "");
     setImageFile(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -612,7 +608,7 @@ const Admin = () => {
                 <div className="ap-product-card" key={p._id}>
                   <div className="ap-pc-image-wrap">
                     {p.productImage ? (
-                      <img src={`${SERVER_URL}${p.productImage}`} alt={p.productName} />
+                      <img src={p.productImage} alt={p.productName} />
                     ) : (
                       <div className="ap-pc-placeholder">MS</div>
                     )}

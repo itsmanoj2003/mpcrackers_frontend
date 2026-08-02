@@ -189,7 +189,7 @@ export default function Cart() {
                             <div key={item._id} className="cart-item-container">
 
                                 <div className="cart-item-image-container">
-                                    <img src={`https://mpcrackers-api.onrender.com${item.productImage}`} className="cart-item-image" alt={item.productName || 'Product'} />
+                                    <img src={item.productImage} className="cart-item-image" alt={item.productName || 'Product'} />
                                 </div>
 
                                 <div className="cart-item-info-container">
